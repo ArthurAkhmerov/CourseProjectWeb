@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CourseProjectWebDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="class_id" />
+    </Key>
+    <Property Name="class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="class_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="dish_id" />
+    </Key>
+    <Property Name="dish_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dish_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dish_description" Type="varchar" MaxLength="200" />
+    <Property Name="dish_price" Type="int" Nullable="false" />
+    <Property Name="dish_imageURL" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="dish_classID" Type="int" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="rest_name" />
+    </Key>
+    <Property Name="rest_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="rest_contact" Type="varchar" MaxLength="20" />
+    <Property Name="rest_address" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Dish_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="class_id" />
+      </Principal>
+      <Dependent Role="Dish">
+        <PropertyRef Name="dish_classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CourseProjectWebDBModelStoreContainer">
+    <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Dish_Class" Association="Self.FK_Dish_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Dish" EntitySet="Dish" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

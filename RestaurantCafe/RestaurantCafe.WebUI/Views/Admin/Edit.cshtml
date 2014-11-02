@@ -1,0 +1,114 @@
+﻿@model RestaurantCafe.Domain.Concrete.Dish
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.dish_name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            //$.getJSON("/Admin/Cuisines/List", function (data) {
+            //    var items = "";
+            //    $.each(data, function (i, cuisine) {
+            //        var selected = (cuisine.Text == 'Итальянская' ) ? "selected" : "";
+            //        items += "<option " + selected + " value='" + cuisine.Value + "'>" + cuisine.Text + "</option>";
+            //    });
+            //    $("#cuisine_name").html(items);
+            //});
+
+
+            $("#cuisine_name").change(function () {
+                $.getJSON("/Admin/Categories/" + $("#cuisine_name > option:selected").attr("value"), function (data) {
+                    var items = "";
+                    $.each(data, function (i, category) {
+                        items += "<option>" + category.Text + "</option>";
+                    });
+                    $("#class_name").html(items);
+                });
+            });
+        });
+    </script>
+}
+
+
+<h2>@Model.dish_name</h2>
+<div style="float:right; margin-right: 400px; margin-top: 150px;">
+    @Html.Image("/Content/Images" + Model.dish_imageURL);
+</div>
+<div class="container">
+    @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { @class = "form-horizantal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Блюдо</legend>
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.dish_id)
+                @Html.ValidationMessageFor(model => model.dish_id)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.dish_name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.dish_name)
+                @Html.ValidationMessageFor(model => model.dish_name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.dish_description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.dish_description)
+                @Html.ValidationMessageFor(model => model.dish_description)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.dish_price)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.dish_price)
+                @Html.ValidationMessageFor(model => model.dish_price)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.dish_imageURL)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.dish_imageURL)
+                @Html.ValidationMessageFor(model => model.dish_imageURL)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.cuisine_name)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.cuisine_name,
+                (SelectList)ViewBag.CuisineList)
+                @Html.ValidationMessageFor(model => model.cuisine_name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.class_name)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.class_name,
+                (SelectList)ViewBag.CategoryList)
+                @Html.ValidationMessageFor(model => model.class_name)
+            </div>
+
+            <p>
+                <input type="submit" value="Сохранить" class="btn btn-success"/>
+            </p>
+        </fieldset>
+    }
+
+
+    <div>
+        @Html.ActionLink("Обратно к меню", "Index")
+    </div>
+</div>
+

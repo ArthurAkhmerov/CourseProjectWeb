@@ -1,0 +1,24 @@
+﻿@model IEnumerable<string>
+
+<table>
+    <tr>
+        @foreach (var link in Model)
+         {
+            <td>
+                @Html.RouteLink(link, new
+                {
+                    controller = "Dish",
+                    action = "List",
+                    category = link,
+                },
+                new
+                {
+                    @class = link == ViewBag.SelectedCategory ? "selected" : null
+                })
+            </td>
+            <td class="foodMenuDivTd"></td>
+         }
+    </tr>
+</table>
+
+

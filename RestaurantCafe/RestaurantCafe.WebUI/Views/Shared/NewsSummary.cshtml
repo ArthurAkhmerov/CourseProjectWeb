@@ -1,0 +1,11 @@
+﻿@model RestaurantCafe.Domain.Concrete.News
+
+<div class="newsItem">
+
+    <div class="newsItemDate">@Model.news_datetime</div>
+    <div class="noticesItemText">
+        <p>@Model.news_text</p>
+        @{ string imageUrl = "/Content/Images/" + @Model.news_imageURL;}
+        <img class="imageIG" src=@imageUrl />
+    </div>
+</div>

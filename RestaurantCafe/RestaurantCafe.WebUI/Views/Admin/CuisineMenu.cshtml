@@ -1,0 +1,17 @@
+﻿@model IEnumerable<string>
+
+<ul class="nav nav-stacked">
+    @foreach (var cuisine in Model)
+    {
+        string hrefCuisine = "/Admin/Menu/cuisine/" + cuisine;
+        <li>
+            <a href=@hrefCuisine>@cuisine</a>
+
+            @if (ViewBag.SelectedCuisine != null && (string)ViewBag.SelectedCuisine == cuisine)
+            {
+                { Html.RenderAction("MenuOfCuisine", "Admin"); }
+            }
+        </li>
+
+    }
+</ul>

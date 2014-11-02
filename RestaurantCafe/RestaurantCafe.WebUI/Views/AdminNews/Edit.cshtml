@@ -1,0 +1,63 @@
+﻿@model RestaurantCafe.Domain.Concrete.News
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    @using (Html.BeginForm("Edit", "AdminNews", FormMethod.Post, new { @class = "form-horizantal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Новость</legend>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.news_id)
+            @Html.ValidationMessageFor(model => model.news_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.news_datetime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.news_datetime)
+            @Html.ValidationMessageFor(model => model.news_datetime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.news_imageURL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.news_imageURL)
+            @Html.ValidationMessageFor(model => model.news_imageURL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.news_text)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.news_text)
+            @Html.ValidationMessageFor(model => model.news_text)
+        </div>
+
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.news_restName)*@
+            @Html.DropDownListFor(model => model.news_restName,
+                new SelectList( new[] { "Restaurant&Cafe" }))
+            @Html.ValidationMessageFor(model => model.news_restName)
+        </div>
+        <p>
+            <input type="submit" value="Сохранить" class="btn btn-success" />
+        </p>
+    </fieldset>
+    }
+
+
+    <div>
+        @Html.ActionLink("Обратно к меню", "List")
+    </div>
+</div>

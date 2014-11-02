@@ -1,0 +1,43 @@
+﻿@model RestaurantCafe.WebUI.Models.DishesListViewModel
+
+@{
+    ViewBag.Title = "Dishes";
+}
+
+<div class="foodMenu">
+    <div class="width">
+        @{ Html.RenderAction("Menu", "Nav");}
+    </div>
+</div>
+
+
+<div class="left w13">
+    @{ Html.RenderAction("CuisineMenu", "Nav");}
+</div>
+
+
+<div class="right w23">
+    @if (@Model.CurrentCuisine != null)
+    {
+        <h1>Ресторан @Model.CurrentCuisine.Remove(@Model.CurrentCuisine.Length - 2)ой кухни</h1>
+    }
+    <div class="items" style="margin-bottom: 150px">
+        @{
+            string tempString = "";
+            
+            foreach (var d in Model.Dishes)
+            {
+                if (d.class_name != tempString)
+                {
+                    <h2>@d.class_name</h2>
+                    tempString = d.class_name;
+                }
+                Html.RenderPartial("DishSummary", d);
+            }
+        }
+    </div>
+</div>
+
+<br class="clearFix" />
+
+

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<string>
+
+<ul class="groups">
+    @foreach (var link in Model)
+    {
+        <li>
+            @Html.RouteLink(link, new
+            {
+                controller = "Dish",
+                action = "List",
+                cuisine = link,
+            },
+            new
+            {
+                @class = link == ViewBag.SelectedCuisine ? "selected" : null
+            })
+            @if (ViewBag.SelectedCuisine != null && (string)ViewBag.SelectedCuisine == link)
+            {
+                { Html.RenderAction("MenuOfCuisine", "Nav"); }
+            }
+        </li>
+    }
+</ul>
+
+
+
+
+

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<RestaurantCafe.Domain.Concrete.Dish>
+@{
+    ViewBag.Title = "Админ: Все блюда";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div style="float: left; margin-left: 30px">
+    <h3>
+        @Html.ActionLink("Добавить Блюдо", "Create", "Admin", new { @class = "btn btn-primary" })
+    </h3>
+
+    @{ Html.RenderAction("CuisineMenu", "Admin");}
+</div>
+<div class="container">
+   
+
+    <div class="pagination pagination-centered">
+        @*@Html.PageLinks((RestaurantCafe.WebUI.Models.PagingInfo)ViewBag.PagingInfo, x => Url.Action("Index",
+            new
+            {
+                cuisine = (ViewBag.CurrentCuisine == null) ? (string)ViewBag.CurrentCuisine : null,
+                category = (ViewBag.CurrentCategory == null) ? (string)ViewBag.CurrentCategory : null,
+                page = x,
+            }))*@
+
+        @Html.PageLinks((RestaurantCafe.WebUI.Models.PagingInfo)ViewBag.PagingInfo, x =>
+            ViewBag.CurrentUrl + x)
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.dish_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dish_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dish_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dish_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dish_imageURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.class_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cuisine_name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dish_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dish_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dish_description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dish_price)
+                </td>
+                <td>
+                    @Html.Image("/Content/Images" + item.dish_imageURL);
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.class_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cuisine_name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { dishId = item.dish_id }, new { @class = "btn" })
+                    @using (Html.BeginForm("Delete", "Admin"))
+                    {
+                        @Html.Hidden("dishId", item.dish_id)
+                        <input type="submit" value="Delete" class="btn btn-success" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div class="pagination pagination-centered">
+        @Html.PageLinks((RestaurantCafe.WebUI.Models.PagingInfo)ViewBag.PagingInfo, x => Url.Action("Index",
+            new { page = x }))
+    </div>
+
+</div>

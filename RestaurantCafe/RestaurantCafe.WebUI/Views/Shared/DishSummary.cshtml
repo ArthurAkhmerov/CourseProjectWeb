@@ -1,0 +1,21 @@
+﻿@model RestaurantCafe.Domain.Concrete.Dish
+
+<a>
+    <span class="miniImage">
+        @if (Model.dish_imageURL != null)
+        {
+            string imageUrl = "/Content/Images" + @Model.dish_imageURL;
+            <img src=@imageUrl />
+
+        }
+        else
+        {
+            <img src="~/Content/Images/dishes/italy/first_course/american_chicken.jpg" />
+        }
+        
+    </span>
+    <span class="itemsItemTitle">@Model.dish_name</span>
+    <span class="price">@Model.dish_price</span>
+    <span class="itemsItemDescription">@Model.dish_description</span>
+</a>
+

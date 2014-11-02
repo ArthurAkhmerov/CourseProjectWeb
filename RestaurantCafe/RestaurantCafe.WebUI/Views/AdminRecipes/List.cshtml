@@ -1,0 +1,63 @@
+﻿@using RestaurantCafe.Domain.Concrete
+
+@model IEnumerable<Recipe>
+
+@{
+    ViewBag.Title = "Admin: Recipes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="float: left; margin-left: 30px">
+    <h3>
+        @Html.ActionLink("Добавить рецепт", "Create", "AdminRecipes", null, new { @class = "btn btn-primary" })
+    </h3>
+</div>
+
+<div class="container">
+    <h3>Рецепты</h3>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.recipe_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.recipe_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.recipe_imageURL)
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recipe_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recipe_description)
+                </td>
+                <td>
+                    @Html.Image("/Content/Images/" + item.recipe_imageURL);
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { recipeId = item.recipe_id }, new { @class = "btn" })
+                    @using (Html.BeginForm("Delete", "AdminRecipes"))
+                    {
+                        @Html.Hidden("recipeId", item.recipe_id)
+                        <input type="submit" value="Delete" class="btn btn-success" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div class="pagination pagination-centered">
+        @Html.PageLinks((RestaurantCafe.WebUI.Models.PagingInfo)ViewBag.PagingInfo, x => Url.Action("List",
+            new { page = x }))
+    </div>
+</div>
+
+

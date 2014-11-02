@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0640210-B2E7-48D5-8E7A-C95C5BA4F63C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RestaurantCafe.Domain</RootNamespace>
+    <AssemblyName>RestaurantCafe.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IDishesRepository.cs" />
+    <Compile Include="Abstract\INewsRepository.cs" />
+    <Compile Include="Abstract\IRecipesRepository.cs" />
+    <Compile Include="Concrete\Class.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Cuisine.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\DiningTable.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Dish.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Dish_partial.cs" />
+    <Compile Include="Concrete\EFDishRepository.cs" />
+    <Compile Include="Concrete\EFNewsRepository.cs" />
+    <Compile Include="Concrete\EFRecipesRepository.cs" />
+    <Compile Include="Concrete\Item.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Menu.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\News.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\News_partial.cs" />
+    <Compile Include="Concrete\Orders.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Recipe.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Recipe_partial.cs" />
+    <Compile Include="Concrete\Restaurant.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\RestaurantCafeModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestaurantCafeModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\RestaurantCafeModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\RestaurantCafeModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestaurantCafeModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Reviews.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\Section.cs">
+      <DependentUpon>RestaurantCafeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Concrete\RestaurantCafeModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RestaurantCafeModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Concrete\RestaurantCafeModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RestaurantCafeModel.edmx</DependentUpon>
+      <LastGenOutput>RestaurantCafeModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Concrete\RestaurantCafeModel.edmx.diagram">
+      <DependentUpon>RestaurantCafeModel.edmx</DependentUpon>
+    </None>
+    <None Include="Concrete\RestaurantCafeModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RestaurantCafeModel.edmx</DependentUpon>
+      <LastGenOutput>RestaurantCafeModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

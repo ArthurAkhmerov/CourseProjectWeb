@@ -1,0 +1,15 @@
+﻿@using RestaurantCafe.Domain.Concrete
+
+@model IEnumerable<Cuisine>
+
+@{
+    ViewBag.Title = "CuisineList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CuisineList</h2>
+
+@foreach(var cuisine in @Model)
+{
+    <p>@cuisine.cuisine_name</p>
+}

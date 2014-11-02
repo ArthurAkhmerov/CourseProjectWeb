@@ -1,0 +1,14 @@
+﻿@model IEnumerable<string>
+
+<ul class="groups">
+    @foreach (var category in Model)
+    {
+        <li>
+            @{
+                string hrefCuisineCategory = "/Admin/Menu/cuisine/" + (string)ViewBag.SelectedCuisine + "/category/" + category;
+            }
+            <a href=@hrefCuisineCategory>@category</a>
+        </li>
+    }
+</ul>
+

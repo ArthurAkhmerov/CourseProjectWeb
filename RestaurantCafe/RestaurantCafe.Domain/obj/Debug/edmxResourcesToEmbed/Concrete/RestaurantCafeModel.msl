@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestaurantCafeModelStoreContainer" CdmEntityContainer="RestaurantCafeEntities">
+    <EntitySetMapping Name="Class">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuisine">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Cuisine">
+        <MappingFragment StoreEntitySet="Cuisine">
+          <ScalarProperty Name="cuisine_name" ColumnName="cuisine_name" />
+          <ScalarProperty Name="cuisine_imageURL" ColumnName="cuisine_imageURL" />
+          <ScalarProperty Name="cuisine_description" ColumnName="cuisine_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiningTable">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.DiningTable">
+        <MappingFragment StoreEntitySet="DiningTable">
+          <ScalarProperty Name="dintable_No" ColumnName="dintable_No" />
+          <ScalarProperty Name="dintable_numberOfChairs" ColumnName="dintable_numberOfChairs" />
+          <ScalarProperty Name="dintable_status" ColumnName="dintable_status" />
+          <ScalarProperty Name="dintable_sectionID" ColumnName="dintable_sectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dish">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Dish">
+        <MappingFragment StoreEntitySet="Dish">
+          <ScalarProperty Name="dish_id" ColumnName="dish_id" />
+          <ScalarProperty Name="dish_name" ColumnName="dish_name" />
+          <ScalarProperty Name="dish_description" ColumnName="dish_description" />
+          <ScalarProperty Name="dish_price" ColumnName="dish_price" />
+          <ScalarProperty Name="dish_imageURL" ColumnName="dish_imageURL" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+          <ScalarProperty Name="cuisine_name" ColumnName="cuisine_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="item_description" ColumnName="item_description" />
+          <ScalarProperty Name="item_price" ColumnName="item_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menu">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+          <ScalarProperty Name="menu_version" ColumnName="menu_version" />
+          <ScalarProperty Name="menu_restName" ColumnName="menu_restName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="news_datetime" ColumnName="news_datetime" />
+          <ScalarProperty Name="news_imageURL" ColumnName="news_imageURL" />
+          <ScalarProperty Name="news_text" ColumnName="news_text" />
+          <ScalarProperty Name="news_restName" ColumnName="news_restName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_datetime" ColumnName="order_datetime" />
+          <ScalarProperty Name="order_author" ColumnName="order_author" />
+          <ScalarProperty Name="order_description" ColumnName="order_description" />
+          <ScalarProperty Name="order_phone" ColumnName="order_phone" />
+          <ScalarProperty Name="order_timeReservation" ColumnName="order_timeReservation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recipe">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Recipe">
+        <MappingFragment StoreEntitySet="Recipe">
+          <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
+          <ScalarProperty Name="recipe_description" ColumnName="recipe_description" />
+          <ScalarProperty Name="recipe_imageURL" ColumnName="recipe_imageURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurant">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Restaurant">
+        <MappingFragment StoreEntitySet="Restaurant">
+          <ScalarProperty Name="rest_name" ColumnName="rest_name" />
+          <ScalarProperty Name="rest_contact" ColumnName="rest_contact" />
+          <ScalarProperty Name="rest_address" ColumnName="rest_address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Reviews">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="reviews_id" ColumnName="reviews_id" />
+          <ScalarProperty Name="reviews_datetime" ColumnName="reviews_datetime" />
+          <ScalarProperty Name="reviews_message" ColumnName="reviews_message" />
+          <ScalarProperty Name="reviews_restName" ColumnName="reviews_restName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Section">
+      <EntityTypeMapping TypeName="RestaurantCafeModel.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="section_id" ColumnName="section_id" />
+          <ScalarProperty Name="section_type" ColumnName="section_type" />
+          <ScalarProperty Name="section_restName" ColumnName="section_restName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Dintable_Order" TypeName="RestaurantCafeModel.Dintable_Order" StoreEntitySet="Dintable_Order">
+      <EndProperty Name="DiningTable">
+        <ScalarProperty Name="dintable_No" ColumnName="dintable_No" />
+      </EndProperty>
+      <EndProperty Name="Orders">
+        <ScalarProperty Name="order_id" ColumnName="order_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Dish_Item" TypeName="RestaurantCafeModel.Dish_Item" StoreEntitySet="Dish_Item">
+      <EndProperty Name="Dish">
+        <ScalarProperty Name="dish_id" ColumnName="dish_id" />
+      </EndProperty>
+      <EndProperty Name="Item">
+        <ScalarProperty Name="item_id" ColumnName="item_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Dish_Recipe" TypeName="RestaurantCafeModel.Dish_Recipe" StoreEntitySet="Dish_Recipe">
+      <EndProperty Name="Dish">
+        <ScalarProperty Name="dish_id" ColumnName="dish_id" />
+      </EndProperty>
+      <EndProperty Name="Recipe">
+        <ScalarProperty Name="recipe_id" ColumnName="recipe_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Menu_Cuisine" TypeName="RestaurantCafeModel.Menu_Cuisine" StoreEntitySet="Menu_Cuisine">
+      <EndProperty Name="Cuisine">
+        <ScalarProperty Name="cuisine_name" ColumnName="cuisine_name" />
+      </EndProperty>
+      <EndProperty Name="Menu">
+        <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,47 @@
+﻿@model RestaurantCafe.Domain.Concrete.Recipe
+
+@{
+    ViewBag.Title = "AdminRecipes: Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    @using (Html.BeginForm("Edit", "AdminRecipes", FormMethod.Post, new { @class = "form-horizantal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Рецепт</legend>
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.recipe_id)
+                @Html.ValidationMessageFor(model => model.recipe_id)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.recipe_description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.recipe_description)
+                @Html.ValidationMessageFor(model => model.recipe_description)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.recipe_imageURL)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.recipe_imageURL)
+                @Html.ValidationMessageFor(model => model.recipe_imageURL)
+            </div>
+            <p>
+                <input type="submit" value="Сохранить" class="btn btn-success" />
+            </p>
+        </fieldset>
+    }
+
+    <div>
+        @Html.ActionLink("Обратно к меню", "List")
+    </div>
+</div>

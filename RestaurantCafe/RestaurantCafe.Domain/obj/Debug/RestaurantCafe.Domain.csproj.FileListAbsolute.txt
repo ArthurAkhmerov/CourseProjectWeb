@@ -1,0 +1,8 @@
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\obj\Debug\RestaurantCafe.Domain.csprojResolveAssemblyReference.cache
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\bin\Debug\RestaurantCafe.Domain.dll.config
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\bin\Debug\RestaurantCafe.Domain.dll
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\bin\Debug\RestaurantCafe.Domain.pdb
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\bin\Debug\EntityFramework.dll
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\bin\Debug\EntityFramework.xml
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\obj\Debug\RestaurantCafe.Domain.dll
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.Domain\obj\Debug\RestaurantCafe.Domain.pdb

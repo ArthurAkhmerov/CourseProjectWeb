@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CourseProjectWebDBModelStoreContainer" CdmEntityContainer="CourseProjectWebDBEntities">
+    <EntitySetMapping Name="Class">
+      <EntityTypeMapping TypeName="CourseProjectWebDBModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="class_id" ColumnName="class_id" />
+          <ScalarProperty Name="class_name" ColumnName="class_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dish">
+      <EntityTypeMapping TypeName="CourseProjectWebDBModel.Dish">
+        <MappingFragment StoreEntitySet="Dish">
+          <ScalarProperty Name="dish_id" ColumnName="dish_id" />
+          <ScalarProperty Name="dish_name" ColumnName="dish_name" />
+          <ScalarProperty Name="dish_description" ColumnName="dish_description" />
+          <ScalarProperty Name="dish_price" ColumnName="dish_price" />
+          <ScalarProperty Name="dish_imageURL" ColumnName="dish_imageURL" />
+          <ScalarProperty Name="dish_classID" ColumnName="dish_classID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurant">
+      <EntityTypeMapping TypeName="CourseProjectWebDBModel.Restaurant">
+        <MappingFragment StoreEntitySet="Restaurant">
+          <ScalarProperty Name="rest_name" ColumnName="rest_name" />
+          <ScalarProperty Name="rest_contact" ColumnName="rest_contact" />
+          <ScalarProperty Name="rest_address" ColumnName="rest_address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<string>
+
+<ul class="groups">
+    @foreach (var link in Model)
+    {
+        <li>
+            @Html.RouteLink(link, new
+            {
+                controller = "Dish",
+                action = "List",
+                cuisine = (string)ViewBag.SelectedCuisine,
+                category = link,
+            },
+            new
+            {
+                @class = link == ViewBag.SelectedCuisine ? "selected" : null
+            })
+        </li>
+    }
+</ul>
+

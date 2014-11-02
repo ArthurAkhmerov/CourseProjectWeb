@@ -1,0 +1,22 @@
+﻿@using RestaurantCafe.Domain.Concrete;
+
+@model IEnumerable<Recipe>
+
+@{
+    ViewBag.Title = "Recipes";;
+}
+
+<div class="pageContent pageBox">
+    <h1>Рецепты</h1>
+    <div class="cooks">
+        @foreach (var recipe in Model)
+        {
+            Html.RenderPartial("RecipeSummary", recipe);
+        }
+    </div>
+
+    <div class="notices">
+        @Html.PageLinks((RestaurantCafe.WebUI.Models.PagingInfo)ViewBag.PagingInfo, x => Url.Action("List",
+            new { page = x }))
+    </div>
+</div>

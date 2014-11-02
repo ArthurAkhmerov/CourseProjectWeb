@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <meta name="description" content="Restaurant@Cafe предложит вам самые лучшие блюда японской, китайской, итальянской, индийской кухни и не только. Наши доступные цены и вкуснейшие блюда, приготовленные поварами из разных стран, станут приятной возможностью для вашего незабываемого времяпрепровождения.">
+    <link href="http://fonts.googleapis.com/css?family=PT+Serif&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href="~/Content/Style/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="body">
+        @{ Html.RenderPartial("Topline"); }
+
+        @{ Html.RenderPartial("Header"); }
+
+        <div class="width">
+            @RenderBody()
+        </div>
+    </div>
+    @{ Html.RenderPartial("Footer"); }
+    <script src="~/Content/JS/slideShow.js"></script>
+    @*<script src="~/Content/JS/slideShow2.js"></script>*@
+    <script src="~/Content/JS/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/JS/myslideShow.js"></script>
+</body>
+</html>
+

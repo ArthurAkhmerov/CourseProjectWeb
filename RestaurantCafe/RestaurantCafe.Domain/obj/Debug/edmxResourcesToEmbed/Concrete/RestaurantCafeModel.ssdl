@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantCafeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="class_name" />
+    </Key>
+    <Property Name="class_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cuisine">
+    <Key>
+      <PropertyRef Name="cuisine_name" />
+    </Key>
+    <Property Name="cuisine_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cuisine_imageURL" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="cuisine_description" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="DiningTable">
+    <Key>
+      <PropertyRef Name="dintable_No" />
+    </Key>
+    <Property Name="dintable_No" Type="int" Nullable="false" />
+    <Property Name="dintable_numberOfChairs" Type="int" Nullable="false" />
+    <Property Name="dintable_status" Type="bit" Nullable="false" />
+    <Property Name="dintable_sectionID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RestaurantCafe.dbo.Dintable_Order' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Dintable_Order">
+    <Key>
+      <PropertyRef Name="dintable_No" />
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="dintable_No" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="dish_id" />
+    </Key>
+    <Property Name="dish_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dish_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dish_description" Type="varchar" MaxLength="200" />
+    <Property Name="dish_price" Type="int" Nullable="false" />
+    <Property Name="dish_imageURL" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="class_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cuisine_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RestaurantCafe.dbo.Dish_Item' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Dish_Item">
+    <Key>
+      <PropertyRef Name="dish_id" />
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="dish_id" Type="int" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RestaurantCafe.dbo.Dish_Recipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Dish_Recipe">
+    <Key>
+      <PropertyRef Name="dish_id" />
+      <PropertyRef Name="recipe_id" />
+    </Key>
+    <Property Name="dish_id" Type="int" Nullable="false" />
+    <Property Name="recipe_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="item_description" Type="varchar" MaxLength="200" />
+    <Property Name="item_price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menu_version" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="menu_restName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RestaurantCafe.dbo.Menu_Cuisine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Menu_Cuisine">
+    <Key>
+      <PropertyRef Name="menu_id" />
+      <PropertyRef Name="cuisine_name" />
+    </Key>
+    <Property Name="menu_id" Type="int" Nullable="false" />
+    <Property Name="cuisine_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="news_id" />
+    </Key>
+    <Property Name="news_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="news_datetime" Type="datetime" Nullable="false" />
+    <Property Name="news_imageURL" Type="varchar" MaxLength="100" />
+    <Property Name="news_text" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="news_restName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="order_datetime" Type="datetime" Nullable="false" />
+    <Property Name="order_author" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="order_description" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="order_phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="order_timeReservation" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recipe">
+    <Key>
+      <PropertyRef Name="recipe_id" />
+    </Key>
+    <Property Name="recipe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="recipe_description" Type="varchar" MaxLength="7000" Nullable="false" />
+    <Property Name="recipe_imageURL" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="rest_name" />
+    </Key>
+    <Property Name="rest_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="rest_contact" Type="varchar" MaxLength="20" />
+    <Property Name="rest_address" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="reviews_id" />
+    </Key>
+    <Property Name="reviews_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reviews_datetime" Type="datetime" Nullable="false" />
+    <Property Name="reviews_message" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="reviews_restName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="section_id" />
+    </Key>
+    <Property Name="section_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="section_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="section_restName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_cuisineName_Cuisine">
+    <End Role="Cuisine" Type="Self.Cuisine" Multiplicity="1" />
+    <End Role="Menu_Cuisine" Type="Self.Menu_Cuisine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuisine">
+        <PropertyRef Name="cuisine_name" />
+      </Principal>
+      <Dependent Role="Menu_Cuisine">
+        <PropertyRef Name="cuisine_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dintableNo_DiningTable">
+    <End Role="DiningTable" Type="Self.DiningTable" Multiplicity="1" />
+    <End Role="Dintable_Order" Type="Self.Dintable_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiningTable">
+        <PropertyRef Name="dintable_No" />
+      </Principal>
+      <Dependent Role="Dintable_Order">
+        <PropertyRef Name="dintable_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dintableSectionID_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="DiningTable" Type="Self.DiningTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="section_id" />
+      </Principal>
+      <Dependent Role="DiningTable">
+        <PropertyRef Name="dintable_sectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dish_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="class_name" />
+      </Principal>
+      <Dependent Role="Dish">
+        <PropertyRef Name="class_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dish_Cuisine">
+    <End Role="Cuisine" Type="Self.Cuisine" Multiplicity="1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuisine">
+        <PropertyRef Name="cuisine_name" />
+      </Principal>
+      <Dependent Role="Dish">
+        <PropertyRef Name="cuisine_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DishItem_Dish">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+    <End Role="Dish_Item" Type="Self.Dish_Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="dish_id" />
+      </Principal>
+      <Dependent Role="Dish_Item">
+        <PropertyRef Name="dish_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DishItem_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="Dish_Item" Type="Self.Dish_Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="Dish_Item">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DishRecipe_Dish">
+    <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+    <End Role="Dish_Recipe" Type="Self.Dish_Recipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dish">
+        <PropertyRef Name="dish_id" />
+      </Principal>
+      <Dependent Role="Dish_Recipe">
+        <PropertyRef Name="dish_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DishRecipe_Recipe">
+    <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
+    <End Role="Dish_Recipe" Type="Self.Dish_Recipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="recipe_id" />
+      </Principal>
+      <Dependent Role="Dish_Recipe">
+        <PropertyRef Name="recipe_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menuID_Menu">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="Menu_Cuisine" Type="Self.Menu_Cuisine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="menu_id" />
+      </Principal>
+      <Dependent Role="Menu_Cuisine">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menuRestname_Restaurant">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="rest_name" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="menu_restName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_newsRestname_Restaurant">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="rest_name" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="news_restName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderID_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="Dintable_Order" Type="Self.Dintable_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="Dintable_Order">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reviewsRestname_Restaurant">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="rest_name" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="reviews_restName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sectionRestname_Restaurant">
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurant">
+        <PropertyRef Name="rest_name" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="section_restName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestaurantCafeModelStoreContainer">
+    <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuisine" EntityType="Self.Cuisine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DiningTable" EntityType="Self.DiningTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dintable_Order" EntityType="Self.Dintable_Order" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Dintable_Order].[dintable_No] AS [dintable_No], 
+[Dintable_Order].[order_id] AS [order_id]
+FROM [dbo].[Dintable_Order] AS [Dintable_Order]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Dish_Item" EntityType="Self.Dish_Item" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Dish_Item].[dish_id] AS [dish_id], 
+[Dish_Item].[item_id] AS [item_id]
+FROM [dbo].[Dish_Item] AS [Dish_Item]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Dish_Recipe" EntityType="Self.Dish_Recipe" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Dish_Recipe].[dish_id] AS [dish_id], 
+[Dish_Recipe].[recipe_id] AS [recipe_id]
+FROM [dbo].[Dish_Recipe] AS [Dish_Recipe]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Menu_Cuisine" EntityType="Self.Menu_Cuisine" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Menu_Cuisine].[menu_id] AS [menu_id], 
+[Menu_Cuisine].[cuisine_name] AS [cuisine_name]
+FROM [dbo].[Menu_Cuisine] AS [Menu_Cuisine]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_cuisineName_Cuisine" Association="Self.FK_cuisineName_Cuisine">
+      <End Role="Cuisine" EntitySet="Cuisine" />
+      <End Role="Menu_Cuisine" EntitySet="Menu_Cuisine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dintableNo_DiningTable" Association="Self.FK_dintableNo_DiningTable">
+      <End Role="DiningTable" EntitySet="DiningTable" />
+      <End Role="Dintable_Order" EntitySet="Dintable_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dintableSectionID_Section" Association="Self.FK_dintableSectionID_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="DiningTable" EntitySet="DiningTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dish_Class" Association="Self.FK_Dish_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Dish" EntitySet="Dish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dish_Cuisine" Association="Self.FK_Dish_Cuisine">
+      <End Role="Cuisine" EntitySet="Cuisine" />
+      <End Role="Dish" EntitySet="Dish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DishItem_Dish" Association="Self.FK_DishItem_Dish">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="Dish_Item" EntitySet="Dish_Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DishItem_Item" Association="Self.FK_DishItem_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="Dish_Item" EntitySet="Dish_Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DishRecipe_Dish" Association="Self.FK_DishRecipe_Dish">
+      <End Role="Dish" EntitySet="Dish" />
+      <End Role="Dish_Recipe" EntitySet="Dish_Recipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DishRecipe_Recipe" Association="Self.FK_DishRecipe_Recipe">
+      <End Role="Recipe" EntitySet="Recipe" />
+      <End Role="Dish_Recipe" EntitySet="Dish_Recipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menuID_Menu" Association="Self.FK_menuID_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="Menu_Cuisine" EntitySet="Menu_Cuisine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menuRestname_Restaurant" Association="Self.FK_menuRestname_Restaurant">
+      <End Role="Restaurant" EntitySet="Restaurant" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_newsRestname_Restaurant" Association="Self.FK_newsRestname_Restaurant">
+      <End Role="Restaurant" EntitySet="Restaurant" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderID_Orders" Association="Self.FK_orderID_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Dintable_Order" EntitySet="Dintable_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reviewsRestname_Restaurant" Association="Self.FK_reviewsRestname_Restaurant">
+      <End Role="Restaurant" EntitySet="Restaurant" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sectionRestname_Restaurant" Association="Self.FK_sectionRestname_Restaurant">
+      <End Role="Restaurant" EntitySet="Restaurant" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,21 @@
+﻿@model RestaurantCafe.WebUI.Models.NewsListViewModel
+
+@{
+    ViewBag.Title = "News";
+}
+
+<div class="pageContent pageBox">
+    <h1>Новости</h1>
+    <div class="news">
+        @foreach (var n in Model.News)
+        {
+            Html.RenderPartial("NewsSummary", n);
+        }
+    </div>
+
+    <div class="notices">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+            new { page = x }))
+    </div>
+</div>
+

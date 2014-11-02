@@ -1,0 +1,12 @@
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\RestaurantCafe.UnitTests.dll
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\RestaurantCafe.UnitTests.pdb
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\Moq.dll
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\Ninject.dll
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\Moq.xml
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\Ninject.xml
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\obj\Debug\RestaurantCafe.UnitTests.csprojResolveAssemblyReference.cache
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\obj\Debug\RestaurantCafe.UnitTests.dll
+c:\users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\obj\Debug\RestaurantCafe.UnitTests.pdb
+C:\Users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\RestaurantCafe.UnitTests.dll.config
+C:\Users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\EntityFramework.dll
+C:\Users\гык\documents\visual studio 2013\Projects\RestaurantCafe\RestaurantCafe.UnitTests\bin\Debug\EntityFramework.xml

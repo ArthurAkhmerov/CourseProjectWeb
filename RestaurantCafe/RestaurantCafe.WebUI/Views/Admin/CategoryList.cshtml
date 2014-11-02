@@ -1,0 +1,13 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CategoryList</h2>
+
+@foreach(var category in @Model)
+{
+    <p>@category</p>
+}

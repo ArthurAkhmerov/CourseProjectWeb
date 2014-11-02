@@ -1,0 +1,12 @@
+﻿@model RestaurantCafe.Domain.Concrete.Recipe
+
+<div class="newsItem">
+    <div class="cooksItemImage">
+        @{ string imageUrl = "/Content/Images/" + @Model.recipe_imageURL;}
+        <img  src=@imageUrl />
+    </div>
+    <div class="cooksItemCnt">
+        @Model.recipe_description
+    </div>
+</div>
+

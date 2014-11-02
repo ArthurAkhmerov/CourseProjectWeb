@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CourseProjectWebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="class_id" />
+    </Key>
+    <Property Name="class_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="class_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Dish" Relationship="Self.FK_Dish_Class" FromRole="Class" ToRole="Dish" />
+  </EntityType>
+  <EntityType Name="Dish">
+    <Key>
+      <PropertyRef Name="dish_id" />
+    </Key>
+    <Property Name="dish_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dish_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dish_description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dish_price" Type="Int32" Nullable="false" />
+    <Property Name="dish_imageURL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dish_classID" Type="Int32" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Dish_Class" FromRole="Dish" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="rest_name" />
+    </Key>
+    <Property Name="rest_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rest_contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="rest_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Dish_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="class_id" />
+      </Principal>
+      <Dependent Role="Dish">
+        <PropertyRef Name="dish_classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CourseProjectWebDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Class" EntityType="Self.Class" />
+    <EntitySet Name="Dish" EntityType="Self.Dish" />
+    <EntitySet Name="Restaurant" EntityType="Self.Restaurant" />
+    <AssociationSet Name="FK_Dish_Class" Association="Self.FK_Dish_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Dish" EntitySet="Dish" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
